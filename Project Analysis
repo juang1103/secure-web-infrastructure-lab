@@ -8,13 +8,19 @@ The project is presented as an operations-focused case study: successful control
 ## Executive summary
 
 | Area | Delivered result |
-| --- | --- |
+
 | Virtualization | Three Linux virtual machines administered through Proxmox |
+
 | Network | Private `10.10.229.0/24` lab with a dedicated gateway and static service addresses |
+
 | Container platform | Docker Engine installed, enabled, and validated with `hello-world` |
+
 | Reverse proxy | Nginx installed, running, and configured to proxy `/blog` to the Ghost application node |
+
 | Web platform | Apache, MySQL, PHP, and WordPress deployed on Ubuntu |
+
 | Hardening | WordPress permissions normalized, `wp-config.php` moved above the document root, and two security plugins activated |
+
 | Troubleshooting | Ghost restart/exited state and resulting Nginx upstream error captured with a repeatable diagnostic runbook |
 
 ## Architecture
@@ -32,37 +38,52 @@ The normalized address plan above uses the report inventory as the source of tru
 ## What I implemented
 
 - Provisioned and administered Ubuntu and Rocky Linux virtual machines in Proxmox.
+
 - Configured SSH-based administration between lab systems.
+
 - Installed Docker CE, enabled the service at boot, and validated the engine.
+
 - Created a persistent Ghost container workload exposed on TCP `3001`.
+
 - Installed Nginx and created a `/blog` reverse-proxy route with client-forwarding headers.
+
 - Built a WordPress LAMP stack with Apache, MySQL, PHP, URL rewriting, and local database access.
+
 - Set WordPress directories to `755` and files to `644`, then validated restricted access.
+
 - Moved `wp-config.php` one level above `/var/www/html` to reduce direct web exposure.
+
 - Activated Shield Security and Wordfence as application-layer controls.
+
 - Recorded service state, configuration, functional output, and unresolved conditions as audit evidence.
 
 ## Selected evidence
 
 | WordPress application validation | Nginx reverse-proxy configuration |
-| --- | --- |
+
 | ![WordPress site running on the Ubuntu LAMP host](assets/evidence/wordpress-site-validation.png) | ![Nginx blog route forwarding to the Ghost node](assets/evidence/nginx-reverse-proxy-config.png) |
+
 | **File-permission validation** | **Application security controls** |
+
 | ![Restricted access to WordPress application directories](assets/evidence/wordpress-permissions-validation.png) | ![Shield Security and Wordfence active in WordPress](assets/evidence/wordpress-security-plugins.png) |
 
 
 ## Engineering status
 
 | Component | Status | Verification |
-| --- | --- | --- |
+
 | Docker Engine | Validated | Service active; `hello-world` completed successfully |
+
 | Nginx | Validated | Service active; proxy configuration captured |
+
 | WordPress LAMP | Validated | Front end loaded and test content rendered |
+
 | WordPress permissions | Validated | Access restrictions and file ownership captured |
+
 | WordPress security plugins | Validated | Shield Security and Wordfence shown active |
+
 | Ghost through `/blog` | Remediation required | Ghost entered an exited/restart condition; Nginx returned an upstream error |
 
-The open Ghost issue is handled in the [Troubleshooting runbook](docs/troubleshooting-runbook.md), including the exact checks needed to isolate container, port, application URL, and proxy-path problems.
 
 ## Security posture
 
@@ -72,9 +93,5 @@ This lab applied several useful controls, but it is a proof of concept rather th
 
 `Proxmox` · `Linux administration` · `TCP/IP` · `SSH` · `Docker` · `Nginx` · `Apache` · `MySQL` · `PHP` · `WordPress` · `File permissions` · `Service validation` · `Troubleshooting` · `Technical documentation` · `GitHub Actions`
 
-## Author
-
-**Juan Guarino**  
-Guarino IT Solutions
 
 This repository is a portfolio case study based on a controlled lab environment. Marconi Law Firm, LLC is a fictional client used for project documentation.
