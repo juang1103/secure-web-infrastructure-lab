@@ -1,14 +1,3 @@
-<p align="center">
-  <img src="assets/banner.svg" alt="Secure Web Infrastructure Lab banner" width="100%">
-</p>
-
-<p align="center">
-  <img alt="Proxmox" src="https://img.shields.io/badge/Proxmox-Virtualization-E57000?style=flat-square">
-  <img alt="Linux" src="https://img.shields.io/badge/Linux-Rocky%208%20%7C%20Ubuntu-FCC624?style=flat-square&logo=linux&logoColor=111111">
-  <img alt="Docker" src="https://img.shields.io/badge/Docker-Containerization-2496ED?style=flat-square&logo=docker&logoColor=white">
-  <img alt="Nginx" src="https://img.shields.io/badge/Nginx-Reverse%20Proxy-009639?style=flat-square&logo=nginx&logoColor=white">
-  <img alt="WordPress" src="https://img.shields.io/badge/WordPress-LAMP-21759B?style=flat-square&logo=wordpress&logoColor=white">
-</p>
 
 # Secure Web Infrastructure and WordPress Hardening Lab
 
@@ -61,7 +50,6 @@ The normalized address plan above uses the report inventory as the source of tru
 | **File-permission validation** | **Application security controls** |
 | ![Restricted access to WordPress application directories](assets/evidence/wordpress-permissions-validation.png) | ![Shield Security and Wordfence active in WordPress](assets/evidence/wordpress-security-plugins.png) |
 
-The complete screenshot catalog, including source page or video timestamp, is in the [Evidence index](docs/evidence-index.md).
 
 ## Engineering status
 
@@ -79,62 +67,6 @@ The open Ghost issue is handled in the [Troubleshooting runbook](docs/troublesho
 ## Security posture
 
 This lab applied several useful controls, but it is a proof of concept rather than a production deployment. The polished documentation and configuration examples do not repeat the passwords contained in the source report. Before production use, the environment should also enforce SELinux, keep host firewalls enabled, terminate TLS, restrict management access, remove `.git` from the web root, pin tested software versions, centralize logs, and implement tested backups.
-
-See the [Security assessment](docs/security-assessment.md) for a prioritized remediation table.
-
-## Repository structure
-
-```text
-.
-├── README.md
-├── SECURITY.md
-├── compose.yaml
-├── .env.example
-├── .github/
-│   └── workflows/repository-checks.yml
-├── assets/
-│   ├── banner.svg
-│   └── evidence/
-├── configs/
-│   └── nginx/ghost.conf
-├── docs/
-│   ├── architecture.md
-│   ├── evidence-index.md
-│   ├── github-publish-checklist.md
-│   ├── implementation.md
-│   ├── original-implementation-record.md
-│   ├── security-assessment.md
-│   ├── troubleshooting-runbook.md
-│   └── validation.md
-└── scripts/
-    ├── check_repository.py
-    └── validate-stack.sh
-```
-
-## Integrated original work
-
-The [Original implementation record](docs/original-implementation-record.md) preserves the full technical story of the submitted project inside the recruiter-ready format: original client scenario, network inventory, Docker and Ghost work, Nginx configuration, WordPress LAMP deployment, security controls, `403` troubleshooting, final validation, and selected screenshots.
-
-## Recreate the Ghost workload
-
-The included Compose file is a sanitized, declarative version of the Ghost container configuration used in the lab.
-
-```bash
-cp .env.example .env
-# Replace every placeholder in .env before starting the workload.
-docker compose config
-docker compose up -d
-```
-
-Use [Implementation](docs/implementation.md) for the full environment sequence and [Validation](docs/validation.md) for acceptance criteria.
-
-## Publish on GitHub
-
-Use the repo name `secure-web-infrastructure-lab` and this description:
-
-> Proxmox multi-VM Linux web infrastructure lab featuring Dockerized Ghost behind Nginx, an Ubuntu LAMP WordPress deployment, security hardening, validation evidence, and a troubleshooting runbook.
-
-The [GitHub publishing checklist](docs/github-publish-checklist.md) provides the recommended topics, upload steps, and final recruiter-facing checks.
 
 ## Skills demonstrated
 
